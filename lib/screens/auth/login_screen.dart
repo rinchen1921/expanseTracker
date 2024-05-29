@@ -1,24 +1,21 @@
-import 'dart:convert';
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:expancetracker/domain/auth/auth_model.dart';
 import 'package:expancetracker/domain/auth/auth_repo.dart';
-import 'package:expancetracker/plugins/http.dart';
-import 'package:expancetracker/plugins/local_shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../hoc/home_layout.dart';
-import '../landing/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _username = TextEditingController();
-  TextEditingController _password = TextEditingController();
+  final TextEditingController _username = TextEditingController();
+  final TextEditingController _password = TextEditingController();
   FocusNode passwordFocusNode = FocusNode();
   bool loading = false;
 
@@ -30,13 +27,16 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {
           loading = true;
         });
+        // ignore: unused_local_variable
         final res = await AuthRepo().loginWithEmailAndPassword(
             AuthModel(username: _username.text, password: _password.text));
 
+        // ignore: use_build_context_synchronously
         Navigator.of(context)
             .pushReplacement(MaterialPageRoute(builder: (_) => HomeLayout()));
       }
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.toString())));
     }
@@ -127,8 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                child: Text('Login'),
                                 margin: EdgeInsets.symmetric(horizontal: 12),
+                                child: Text('Login'),
                               ),
                               if (loading)
                                 Container(

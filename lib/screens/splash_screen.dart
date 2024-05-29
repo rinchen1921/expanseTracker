@@ -1,9 +1,8 @@
-import 'package:expancetracker/base/style/text_styles.dart';
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:expancetracker/hoc/home_layout.dart';
 import 'package:expancetracker/screens/auth/login_screen.dart';
-import 'package:expancetracker/screens/landing/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../plugins/local_shared_preferences.dart';
 
@@ -17,42 +16,41 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    super.initState();
     checkIfUserIsLoggedIn();
   }
 
   Future<void> checkIfUserIsLoggedIn() async {
-    // final SharedPreferences prefs = await SharedPreferences.getInstance();
     final token = await getTokenFromLocalStorage();
     if (token != '') {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => HomeLayout()));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const HomeLayout()));
     } else {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (_) => LoginScreen()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      child: Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Welcome to the ',
+              'Welcome to the',
               textAlign: TextAlign.center,
-              style: TypoStyles().kPageHeader,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
               'Expense Tracker',
               textAlign: TextAlign.center,
-              style: TypoStyles().kPageHeader,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ],
         ),
       ),
-    ));
+    );
   }
 }

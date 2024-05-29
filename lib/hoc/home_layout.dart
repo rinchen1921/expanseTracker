@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:expancetracker/screens/account/account_screen.dart';
-import 'package:expancetracker/screens/landing/home_screen.dart';
+import 'package:expancetracker/screens/landing/home.dart';
 import 'package:flutter/material.dart';
 
 class HomeLayout extends StatefulWidget {
@@ -14,19 +16,14 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   List<String> titles = ['Home', 'Account'];
   List<Widget> screens = [
-    HomeScreen(),
+    Home(),
     AccountScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(titles[_selectedIndex]),
-      // ),
-      body: SingleChildScrollView(
-        child: screens[_selectedIndex],
-      ),
+      body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (val) {
@@ -36,9 +33,12 @@ class _HomeLayoutState extends State<HomeLayout> {
         },
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Accounts'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.edit_document), label: 'Document'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: 'Account'),
         ],
       ),
     );

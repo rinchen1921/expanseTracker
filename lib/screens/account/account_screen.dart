@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import '../../domain/account/account_model.dart';
@@ -17,6 +19,7 @@ class _AccountScreenState extends State<AccountScreen> {
 
   @override
   void initState() {
+    super.initState();
     loadAccounts();
   }
 
@@ -30,6 +33,7 @@ class _AccountScreenState extends State<AccountScreen> {
         accounts = res;
       });
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.toString())));
     }
@@ -41,29 +45,31 @@ class _AccountScreenState extends State<AccountScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height,
-      child: loading ? Dataloading() : ListView.builder(
-          shrinkWrap: true,
-          itemCount: accounts.length,
-          itemBuilder: (context, int index) {
-            return ListTile(
-              contentPadding: EdgeInsets.all(4),
-              titleTextStyle:
-                  TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              subtitleTextStyle: TextStyle(fontSize: 20),
-              leading: Container(
-                height: 90,
-                width: 90,
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(accounts[index].img),
-                  radius: 100,
-                ),
-              ),
-              title: Text(accounts[index].title),
-              subtitle: Text(accounts[index].openingBalance.toString()),
-            );
-          }),
+      child: loading
+          ? Dataloading()
+          : ListView.builder(
+              shrinkWrap: true,
+              itemCount: accounts.length,
+              itemBuilder: (context, int index) {
+                return ListTile(
+                  contentPadding: EdgeInsets.all(4),
+                  titleTextStyle:
+                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  subtitleTextStyle: TextStyle(fontSize: 20),
+                  leading: SizedBox(
+                    height: 90,
+                    width: 90,
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(accounts[index].img),
+                      radius: 100,
+                    ),
+                  ),
+                  title: Text(accounts[index].title),
+                  subtitle: Text(accounts[index].openingBalance.toString()),
+                );
+              }),
     );
   }
 }
