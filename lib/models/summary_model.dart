@@ -18,7 +18,7 @@ class SummaryModel {
       openingBalance: json['data']['openingBalance'] ?? 0,
       targetedBudget: json['data']['targetedBudget'] ?? 0,
       totalIncome: json['data']['totalIncome'] ?? 0,
-      totalExpenses: json['data']['totalExpenses'] ?? 0,
+      totalExpenses: json['data']['expenses'] ?? 0,
     );
   }
 }

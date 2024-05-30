@@ -1,44 +1,68 @@
-// ignore_for_file: prefer_const_constructors, file_names
+// recent_transaction.dart
 
-import 'package:expancetracker/screens/landing/transaction_layout/transaction_layout.dart';
+// ignore_for_file: prefer_const_constructors, use_super_parameters
+
 import 'package:flutter/material.dart';
+import 'package:expancetracker/screens/landing/transaction_layout/transaction_layout.dart';
+import 'package:expancetracker/api/api_service.dart';
+import 'package:expancetracker/models/transaction_model.dart';
 
-class Recenttransaction extends StatefulWidget {
-  const Recenttransaction({super.key});
+class RecentTransaction extends StatefulWidget {
+  const RecentTransaction({Key? key}) : super(key: key);
 
   @override
-  State<Recenttransaction> createState() => _RecenttransactionState();
+  State<RecentTransaction> createState() => _RecentTransactionState();
 }
 
-class _RecenttransactionState extends State<Recenttransaction> {
+class _RecentTransactionState extends State<RecentTransaction> {
+  late Future<List<TransactionModel>> _futureTransactions;
+
+  @override
+  void initState() {
+    super.initState();
+    _futureTransactions = ApiService().fetchTransactions();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           SizedBox(height: 20),
           Text(
             "Recent Transactions",
             style: TextStyle(
-              color: Color.fromARGB(255, 243, 105, 41),
-              fontWeight: FontWeight.bold,
-            ),
+                color: Color.fromARGB(255, 243, 105, 41),
+                fontWeight: FontWeight.w500,
+                fontFamily: 'Poppins',
+                fontSize: 16),
           ),
           SizedBox(height: 10),
-          SingleChildScrollView(
-            padding: EdgeInsets.only(top: 10),
-            child: Column(
-              children: [
-                TransactionLayout(),
-                TransactionLayout(),
-                TransactionLayout(),
-                TransactionLayout(),
-                TransactionLayout(),
-                TransactionLayout(),
-              ],
-            ),
+          FutureBuilder<List<TransactionModel>>(
+            future: _futureTransactions,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else {
+                List<TransactionModel> transactions = snapshot.data!;
+                return SingleChildScrollView(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Column(
+                    children: transactions.map((transaction) {
+                      return TransactionLayout(
+                        title: transaction.title,
+                        date: transaction.createdAt.toString(),
+                        amount: transaction.amount,
+                      );
+                    }).toList(),
+                  ),
+                );
+              }
+            },
           ),
         ],
       ),

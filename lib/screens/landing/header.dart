@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:expancetracker/api/api_service.dart';
-import 'package:expancetracker/models/summaryModel.dart';
+import 'package:expancetracker/models/summary_model.dart';
 
 class Header extends StatefulWidget {
   const Header({super.key});
@@ -96,37 +96,25 @@ class _HeaderState extends State<Header> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               children: [
                                 Text(
                                   'Current Balance',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 14),
                                 ),
                                 Text(
                                   'Nu. ${summary.openingBalance}',
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  'Targeted Budget',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14),
-                                ),
-                                Text(
-                                  'Nu. ${summary.targetedBudget}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
+                                  ),
                                 ),
                               ],
                             ),
@@ -142,10 +130,10 @@ class _HeaderState extends State<Header> {
                             color: const Color.fromARGB(255, 255, 255, 255),
                             boxShadow: [
                               BoxShadow(
-                                color: Color.fromARGB(255, 171, 171, 171)
+                                color: Color.fromARGB(255, 213, 213, 213)
                                     .withOpacity(0.5),
-                                spreadRadius: 10,
-                                blurRadius: 10,
+                                spreadRadius: 0,
+                                blurRadius: 100,
                                 offset: Offset(0, 3),
                               ),
                             ],
@@ -156,40 +144,85 @@ class _HeaderState extends State<Header> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      "Total Income",
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 79, 79, 79),
-                                          fontFamily: 'poppins'),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.arrow_downward_outlined,
+                                            size: 30,
+                                            color: const Color.fromARGB(
+                                                255, 0, 136, 5)),
+                                      ],
                                     ),
-                                    Text(
-                                      "Nu. ${summary.totalIncome}",
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "Total Expenses",
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 79, 79, 79),
-                                        fontFamily: 'Poppins',
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Total Income",
+                                            style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 79, 79, 79),
+                                              fontFamily: 'Poppins',
+                                            ),
+                                          ),
+                                          Text(
+                                            "Nu. ${summary.totalIncome}",
+                                            style: TextStyle(
+                                              fontSize: 24,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Poppins',
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    Text(
-                                      "Nu. ${summary.totalExpenses}",
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.arrow_upward_outlined,
+                                            color: const Color.fromARGB(
+                                                255, 181, 12, 0),
+                                            size: 30)
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            "Total Expenses",
+                                            style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 41, 41, 41),
+                                              fontFamily: 'Poppins',
+                                            ),
+                                          ),
+                                          Text(
+                                            "Nu. ${summary.totalExpenses}",
+                                            style: TextStyle(
+                                              fontSize: 24,
+                                              color: Color.fromARGB(
+                                                  255, 41, 41, 41),
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Poppins',
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],

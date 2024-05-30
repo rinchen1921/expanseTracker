@@ -41,12 +41,20 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Welcome to the',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                fontFamily: "Poppins",
+              ),
             ),
             Text(
               'Expense Tracker',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                fontFamily: "Poppins",
+              ),
             ),
           ],
         ),

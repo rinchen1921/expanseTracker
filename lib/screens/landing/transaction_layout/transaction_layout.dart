@@ -1,15 +1,20 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// transaction_layout.dart
+
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
-class TransactionLayout extends StatefulWidget {
-  const TransactionLayout({super.key});
+class TransactionLayout extends StatelessWidget {
+  final String title;
+  final String date;
+  final double amount;
 
-  @override
-  State<TransactionLayout> createState() => _TransactionLayoutState();
-}
+  const TransactionLayout({
+    required this.title,
+    required this.date,
+    required this.amount,
+  });
 
-class _TransactionLayoutState extends State<TransactionLayout> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,31 +24,43 @@ class _TransactionLayoutState extends State<TransactionLayout> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 22.0,
-                    backgroundImage: AssetImage('assets/images/profile.jpg'),
-                  ),
-                  SizedBox(width: 20),
-                  Column(
-                    children: [
-                      Text("Family Dinner",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text("2nd June, 2024"),
-                    ],
-                  ),
-                ],
-              ),
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 20.0,
+                  backgroundImage: AssetImage('assets/images/profile.jpg'),
+                ),
+                SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                    Text(
+                      date,
+                      style: TextStyle(fontFamily: "Poppins"),
+                    ),
+                  ],
+                ),
+              ],
             ),
             Container(
               padding: EdgeInsets.only(top: 10),
               child: Column(
                 children: [
-                  Text("Nu. 4000",
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold))
+                  Text(
+                    "Nu. $amount",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Poppins",
+                    ),
+                  )
                 ],
               ),
             ),

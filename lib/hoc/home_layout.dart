@@ -37,8 +37,6 @@ class _HomeLayoutState extends State<HomeLayout> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.edit_document), label: 'Document'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), label: 'Account'),
         ],
       ),
     );

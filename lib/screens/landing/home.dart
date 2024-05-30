@@ -19,8 +19,8 @@ class _HomeState extends State<Home> {
       child: Column(
         children: [
           Header(),
-          Currentbalance(),
-          Recenttransaction(),
+          CurrentBalance(),
+          RecentTransaction(),
         ],
       ),
     );

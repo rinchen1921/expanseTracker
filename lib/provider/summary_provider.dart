@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:expancetracker/models/summaryModel.dart';
+import 'package:expancetracker/models/summary_model.dart';
 
 class SummaryProvider {
   static const String apiUrl = 'http://10.254.251.126:3030/summary';
