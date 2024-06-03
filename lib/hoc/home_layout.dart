@@ -2,6 +2,8 @@
 
 import 'package:expancetracker/screens/account/account_screen.dart';
 import 'package:expancetracker/screens/landing/home.dart';
+import 'package:expancetracker/screens/profile/profile_layout.dart';
+import 'package:expancetracker/screens/transaction/add_transaction.dart';
 import 'package:flutter/material.dart';
 
 class HomeLayout extends StatefulWidget {
@@ -14,10 +16,12 @@ class HomeLayout extends StatefulWidget {
 class _HomeLayoutState extends State<HomeLayout> {
   int _selectedIndex = 0;
 
-  List<String> titles = ['Home', 'Account'];
+  List<String> titles = ['Home', 'Account', 'Add', 'Profile'];
   List<Widget> screens = [
     Home(),
     AccountScreen(),
+    AddTransaction(),
+    ProfileLayout(),
   ];
 
   @override
@@ -34,9 +38,20 @@ class _HomeLayoutState extends State<HomeLayout> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.edit_document), label: 'Document'),
+            icon: Icon(Icons.home),
+            backgroundColor: Colors.orange,
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add,
+            ),
+            label: 'Account',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Add'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.edit_document), label: 'Profile'),
         ],
       ),
     );

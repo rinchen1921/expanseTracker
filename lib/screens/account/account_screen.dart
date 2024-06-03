@@ -55,9 +55,12 @@ class _AccountScreenState extends State<AccountScreen> {
               itemBuilder: (context, int index) {
                 return ListTile(
                   contentPadding: EdgeInsets.all(4),
-                  titleTextStyle:
-                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  subtitleTextStyle: TextStyle(fontSize: 20),
+                  titleTextStyle: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins",
+                  ),
+                  subtitleTextStyle: TextStyle(fontFamily: "Poppins"),
                   leading: SizedBox(
                     height: 90,
                     width: 90,
