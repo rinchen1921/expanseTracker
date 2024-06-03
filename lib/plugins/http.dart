@@ -17,6 +17,9 @@ Future PostRequest(String url, Map<String, dynamic> body) async {
     'Content-Type': 'application/json; charset=UTF-8',
     'Authorization': 'Bearer ${await getTokenFromLocalStorage()}'
   };
-  return await http.post(Uri.parse(BaseConfig().baseUrl + url),
-      headers: headers, body: jsonEncode(body));
+  return await http.post(
+    Uri.parse(BaseConfig().baseUrl + url),
+    headers: headers,
+    body: jsonEncode(body),
+  );
 }

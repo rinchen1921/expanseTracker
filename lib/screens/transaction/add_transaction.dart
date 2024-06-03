@@ -33,7 +33,7 @@ class _AddTransactionState extends State<AddTransaction> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Color.fromARGB(255, 243, 105, 41),
         title: Text(
           "Add Transaction",
           style: TextStyle(

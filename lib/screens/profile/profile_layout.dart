@@ -16,7 +16,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Color.fromARGB(255, 243, 105, 41),
         title: Text(
           "Profile",
           style: TextStyle(

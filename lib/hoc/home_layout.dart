@@ -31,27 +31,29 @@ class _HomeLayoutState extends State<HomeLayout> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (val) {
-          setState(() {
-            _selectedIndex = val;
-          });
+          setState(
+            () {
+              _selectedIndex = val;
+            },
+          );
         },
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            backgroundColor: Colors.orange,
+            backgroundColor: Color.fromARGB(255, 243, 105, 41),
             label: 'Home',
           ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.edit_document), label: 'Account'),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.add,
             ),
-            label: 'Account',
+            label: 'Add',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Add'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.edit_document), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );
