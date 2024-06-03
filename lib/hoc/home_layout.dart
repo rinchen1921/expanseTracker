@@ -46,14 +46,20 @@ class _HomeLayoutState extends State<HomeLayout> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.edit_document), label: 'Account'),
+              backgroundColor: Color.fromARGB(255, 243, 105, 41),
+              icon: Icon(Icons.edit_document),
+              label: 'Account'),
           BottomNavigationBarItem(
+            backgroundColor: Color.fromARGB(255, 243, 105, 41),
             icon: Icon(
               Icons.add,
             ),
             label: 'Add',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(
+              backgroundColor: Color.fromARGB(255, 243, 105, 41),
+              icon: Icon(Icons.person),
+              label: 'Profile'),
         ],
       ),
     );
